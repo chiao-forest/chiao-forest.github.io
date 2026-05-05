@@ -30,51 +30,56 @@
         .container { max-width: 900px; margin: auto; padding: 40px 20px; }
         .section-title { text-align: center; color: var(--forest-green); border-bottom: 2px solid var(--leaf-green); width: 100%; padding-bottom: 10px; margin-bottom: 30px; letter-spacing: 2px; }
 
-        /* --- 進階雜誌感照片牆 --- */
+        /* --- 左右對齊平衡排版 --- */
         .photo-layout {
             display: grid;
-            grid-template-columns: 2fr 1fr; /* 左邊占2份寬，右邊占1份 */
+            grid-template-columns: 1fr 1fr; /* 左右各一半 */
             gap: 15px;
             margin-bottom: 60px;
+            align-items: start;
         }
 
-        .main-photo {
-            height: 415px; /* 設定總高度 */
-        }
-
-        .side-photos {
+        /* 左側容器：上下放兩張 */
+        .left-side {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        .side-photo {
-            height: 200px; /* (415px - 15px間距) / 2 = 200px */
+        /* 右側容器：單獨放那張超長圖 */
+        .right-side {
+            height: 100%;
         }
 
         .photo-layout img {
             width: 100%;
-            object-fit: cover; /* 這裡用 cover 確保填滿格子，但我們可以微調位置 */
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: 0.3s;
             cursor: pointer;
+            display: block;
         }
 
-        /* 針對中間那張直式圖，如果怕切到字，可以改用 contain */
-        .fit-contain {
-            object-fit: contain !important;
-            background-color: white;
+        /* 設定左邊兩張圖的高度，加起來等於右邊長圖 */
+        .left-photo {
+            height: 242px; /* 固定高度讓左邊兩張加起來整齊 */
+            object-fit: cover;
+        }
+
+        /* 右邊長圖：確保完整顯示不裁切 */
+        .long-photo {
+            height: 500px; /* 您可以根據右圖內容調整這個高度 */
+            object-fit: contain; 
+            background-color: white; /* 留白處自動補白 */
         }
 
         .photo-layout img:hover {
-            transform: scale(1.02);
+            transform: translateY(-5px);
         }
 
-        /* 手機版自動變回一排一條，才不會太擠 */
         @media (max-width: 600px) {
             .photo-layout { grid-template-columns: 1fr; }
-            .main-photo, .side-photo { height: auto; max-height: 300px; }
+            .left-photo, .long-photo { height: auto; }
         }
 
         /* --- 點擊式菜單 --- */
@@ -115,17 +120,17 @@
             <p>外皮酥脆、內餡紮實，我們堅持使用高品質食材，為您現點現烤最純粹的美味。</p>
         </section>
 
-   <!-- 照片牆：左大右二小排版 -->
+  <!-- 照片牆：左二小右一長平衡版 -->
         <div class="photo-layout">
-            <!-- 左邊：大張形象圖 -->
-            <div class="main-photo">
-                <img src="土地形象圖.JPG" onclick="openModal('土地形象圖.JPG', 'logo.jpg')" alt="形象圖">
+            <!-- 左邊：上下兩張 -->
+            <div class="left-side">
+                <img src="形象圖.JPG" class="left-photo" onclick="openModal('形象圖.JPG', 'logo.jpg')" alt="形象圖">
+                <img src="logo.jpg" class="left-photo" onclick="openModal('logo.jpg', 'logo.jpg')" alt="Logo">
             </div>
 
-            <!-- 右邊：上下兩張 -->
-            <div class="side-photos">
-                <img src="形象圖.JPG" class="side-photo fit-contain" onclick="openModal('形象圖.JPG', 'logo.jpg')" alt="土地資訊">
-                <img src="logo.jpg" class="side-photo" onclick="openModal('logo.jpg', 'logo.jpg')" alt="Logo">
+            <!-- 右邊：單獨放超長直式圖 -->
+            <div class="right-side">
+                <img src="土地形象圖.JPG" class="long-photo" onclick="openModal('土地形象圖.JPG', 'logo.jpg')" alt="土地資訊">
             </div>
         </div>
 
