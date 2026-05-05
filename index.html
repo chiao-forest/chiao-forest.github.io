@@ -12,14 +12,6 @@
             --cream: #f4f7f1;
             --wood-brown: #8b5a2b;
         }
-        <!-- 彈出視窗結構：內含兩個圖片容器 -->
-<div id="imageModal" class="modal" onclick="closeModal()">
-    <span class="modal-close">&times;</span>
-    <div class="modal-container">
-        <img class="modal-content" id="modalImg1">
-        <img class="modal-content" id="modalImg2">
-    </div>
-</div>
 
         body {
             font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
@@ -29,151 +21,102 @@
         /* --- 橫幅設計 --- */
         header {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('photo1.jpeg');
-            background-size: cover; background-position: center; height: 60vh;
+            background-size: cover; background-position: center; height: 50vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
         }
-        .logo-title { font-size: 3.5em; letter-spacing: 4px; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
-        .sub-title { font-size: 1.2em; opacity: 0.9; font-weight: 300; }
+        .logo-title { font-size: 3em; letter-spacing: 4px; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
 
         .container { max-width: 900px; margin: auto; padding: 40px 20px; }
         .section-title { text-align: center; color: var(--forest-green); border-bottom: 2px solid var(--leaf-green); width: 100%; padding-bottom: 10px; margin-bottom: 30px; letter-spacing: 2px; }
 
-        /* --- 左右對齊平衡排版 --- */
+        /* --- 照片牆：左右平衡排版 --- */
         .photo-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* 左右各一半 */
-            gap: 15px;
-            margin-bottom: 60px;
-            align-items: start;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 60px; align-items: start;
         }
-
-        /* 左側容器：上下放兩張 */
-        .left-side {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .left-side { display: flex; flex-direction: column; gap: 15px; }
+        .photo-layout img { 
+            width: 100%; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            transition: 0.3s; cursor: pointer; display: block; 
         }
+        .left-photo { height: 242px; object-fit: cover; } /* 左邊小圖高度 */
+        .long-photo { height: 500px; object-fit: contain; background-color: white; } /* 右邊長圖不裁切 */
+        .photo-layout img:hover { transform: translateY(-5px); }
 
-        /* 右側容器：單獨放那張超長圖 */
-        .right-side {
-            height: 100%;
-        }
-
-        .photo-layout img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            cursor: pointer;
-            display: block;
-        }
-
-        /* 設定左邊兩張圖的高度，加起來等於右邊長圖 */
-        .left-photo {
-            height: 242px; /* 固定高度讓左邊兩張加起來整齊 */
-            object-fit: cover;
-        }
-
-        /* 右邊長圖：確保完整顯示不裁切 */
-        .long-photo {
-            height: 500px; /* 您可以根據右圖內容調整這個高度 */
-            object-fit: contain; 
-            background-color: white; /* 留白處自動補白 */
-        }
-
-        .photo-layout img:hover {
-            transform: translateY(-5px);
-        }
-
-        @media (max-width: 600px) {
-            .photo-layout { grid-template-columns: 1fr; }
-            .left-photo, .long-photo { height: auto; }
-        }
-
-        /* --- 點擊式菜單 --- */
+        /* --- 菜單設計 --- */
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         .menu-item { 
             background: white; padding: 18px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--leaf-green); 
             cursor: pointer; transition: 0.3s; display: flex; justify-content: space-between; align-items: center;
         }
-        .menu-item:hover { background: #f0f4ec; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
-        .menu-name { font-weight: bold; color: var(--forest-green); font-size: 1.05em; }
+        .menu-item:hover { background: #f0f4ec; transform: translateY(-2px); }
+        .menu-name { font-weight: bold; color: var(--forest-green); }
         .menu-price { color: var(--wood-brown); font-weight: bold; }
 
         /* --- 按鈕設計 --- */
-        .cta-container { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 25px; }
-        .btn { padding: 12px 22px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 8px; font-size: 14px; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .cta-container { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 25px; }
+        .btn { padding: 12px 20px; border-radius: 25px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; gap: 8px; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .btn:hover { opacity: 0.85; transform: translateY(-3px); }
 
         /* --- 彈出視窗 (Modal) --- */
-        .modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; cursor: zoom-out; }
-        .modal-content { max-width: 90%; max-height: 85%; border-radius: 10px; border: 3px solid white; }
-        .modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
+        .modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        .modal-container { display: flex; gap: 15px; max-width: 90%; max-height: 80%; flex-direction: column; }
+        @media (min-width: 768px) { .modal-container { flex-direction: row; } }
+        .modal-content { max-width: 100%; max-height: 40vh; border-radius: 10px; border: 2px solid white; object-fit: contain; }
+        @media (min-width: 768px) { .modal-content { max-height: 75vh; width: 48%; } }
+        .modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
 
         .info-card { background: white; padding: 30px; border-radius: 20px; margin-top: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
         footer { text-align: center; padding: 50px 20px; font-size: 0.85em; color: #999; }
-        .admin-link { color: #ddd; text-decoration: none; font-size: 0.8em; }
+
+        @media (max-width: 600px) { .photo-layout { grid-template-columns: 1fr; } .left-photo, .long-photo { height: auto; } }
     </style>
 </head>
 <body>
 
     <header>
         <h1 class="logo-title">🌲CHiAO 森林。雞蛋糕</h1>
-        <p class="sub-title">100% 純鮮奶不加水 | 每一口都是手作的溫度</p>
+        <p>100% 純鮮奶不加水 | 每一口都是手作的溫度</p>
     </header>
 
     <div class="container">
-        <section style="text-align: center; margin-bottom: 50px;">
-            <h2 class="section-title">森林裡的療癒點心</h2>
-            <p>外皮酥脆、內餡紮實，我們堅持使用高品質食材，為您現點現烤最純粹的美味。</p>
-        </section>
-
-  <!-- 照片牆：左二小右一長平衡版 -->
+        <!-- 照片牆區塊 -->
         <div class="photo-layout">
-            <!-- 左邊：上下兩張 -->
             <div class="left-side">
                 <img src="形象圖.JPG" class="left-photo" onclick="openModal('形象圖.JPG', 'logo.jpg')" alt="形象圖">
                 <img src="logo.jpg" class="left-photo" onclick="openModal('logo.jpg', 'logo.jpg')" alt="Logo">
             </div>
-
-            <!-- 右邊：單獨放超長直式圖 -->
             <div class="right-side">
                 <img src="土地形象圖.JPG" class="long-photo" onclick="openModal('土地形象圖.JPG', 'logo.jpg')" alt="土地資訊">
             </div>
         </div>
 
-        <!-- 推薦口味區塊 -->
         <section style="margin-bottom: 60px;">
-            <h2 class="section-title">推薦口味 (點擊看美照)</h2>
-            <p style="text-align: center; margin-top: -20px; margin-bottom: 20px; color: #888; font-size: 0.9em;">💡 點擊口味名稱可查看精美圖片</p>
+            <h2 class="section-title">推薦口味 (店內價)</h2>
             <div class="menu-grid">
-                <!-- 💡 openModal('請自行輸入圖片') 請自行對應上傳的檔案 -->
+                <!-- 💡 您在這裡修改點擊後要出現的兩張圖 -->
                 <div class="menu-item" onclick="openModal('9.jpg','4.JPG')">
                     <span class="menu-name">經典原味 (9入)/(4入)</span><span class="menu-price">$100/$50</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg')">
-                    <span class="menu-name">濃郁乳酪(4入)</span><span class="menu-price">$60</span>
+                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
+                    <span class="menu-name">濃郁乳酪 (4入)</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('巧克力.JPG')">
+                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
                     <span class="menu-name">巧克力豆</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('黑糖q.JPG')">
+                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
                     <span class="menu-name">黑糖 Q 麻糬</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg')">
+                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
                     <span class="menu-name">熱狗</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg')">
+                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
                     <span class="menu-name">乳酪巧克力</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg')">
+                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
                     <span class="menu-name">黑眼白玉</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg')">
-                    <span class="menu-name">組合 (任選三種口味)</span><span class="menu-price">$120</span>
-                </div>
-                <div class="menu-item" onclick="openModal('盒裝款dm.jpg','盒裝款照片.JPG')">
-                    <span class="menu-name">盒裝分享餐(4入)(9入)</span><span class="menu-price">$60/$120</span>
+                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
+                    <span class="menu-name">組合 (任選三種)</span><span class="menu-price">$120</span>
                 </div>
             </div>
         </section>
@@ -182,36 +125,37 @@
             <h2 class="section-title">聯絡我們</h2>
             <div class="info-card">
                 <p><i class="fas fa-map-marker-alt"></i> 桃園市中壢區福星五街26號</p>
-                <p><i class="fas fa-clock"></i> 營業時間：以周日為主(或在市集)，請參考最新公告</p>
                 <p><i class="fab fa-line"></i> LINE ID：<strong>@891leegb</strong></p>
                 
                 <div class="cta-container">
-                    <a href="https://www.google.com/maps/search/?api=1&query=🌲CHiAO 森林。雞蛋糕" target="_blank" class="btn" style="background:#4285F4;">Google 地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=CHiAO森林雞蛋糕" target="_blank" class="btn" style="background:#4285F4;">Google 地圖</a>
                     <a href="https://line.me/R/ti/p/@891leegb" target="_blank" class="btn" style="background:#06C755;">LINE 預訂</a>
                     <a href="https://www.facebook.com/CHiAO.forest" target="_blank" class="btn" style="background:#1877F2;">Facebook</a>
-                    <!-- 外送按鈕 -->
-                    <a href="https://www.ubereats.com/..." target="_blank" class="btn" style="background:#06C167;">Uber Eats</a>
-                    <a href="https://www.foodpanda.com.tw/..." target="_blank" class="btn" style="background:#D70F64;">Foodpanda</a>
+                    <a href="#" target="_blank" class="btn" style="background:#06C167;">Uber Eats</a>
+                    <a href="#" target="_blank" class="btn" style="background:#D70F64;">Foodpanda</a>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- 彈出視窗結構 -->
+    <!-- 彈出視窗 -->
     <div id="imageModal" class="modal" onclick="closeModal()">
         <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modalImg">
+        <div class="modal-container">
+            <img class="modal-content" id="modalImg1">
+            <img class="modal-content" id="modalImg2">
+        </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 🌲CHiAO 森林。雞蛋糕 版權所有</p>
-        <a href="https://你的帳號.pythonanywhere.com" class="admin-link">Staff Login</a>
+        <p>&copy; 2026 CHiAO 森林雞蛋糕 | <a href="https://chiao-forest.pythonanywhere.com" style="color:#ccc; text-decoration:none;">後台管理</a></p>
     </footer>
 
     <script>
-        function openModal(imgSrc) {
+        function openModal(imgSrc1, imgSrc2) {
             document.getElementById('imageModal').style.display = "flex";
-            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalImg1').src = imgSrc1;
+            document.getElementById('modalImg2').src = imgSrc2;
         }
         function closeModal() {
             document.getElementById('imageModal').style.display = "none";
