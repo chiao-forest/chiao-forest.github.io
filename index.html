@@ -30,11 +30,52 @@
         .container { max-width: 900px; margin: auto; padding: 40px 20px; }
         .section-title { text-align: center; color: var(--forest-green); border-bottom: 2px solid var(--leaf-green); width: 100%; padding-bottom: 10px; margin-bottom: 30px; letter-spacing: 2px; }
 
-        /* --- 瀑布流照片牆 --- */
-        .photo-gallery { column-count: 2; column-gap: 15px; margin-bottom: 60px; }
-        @media (min-width: 768px) { .photo-gallery { column-count: 3; } }
-        .photo-gallery img { width: 100%; height: auto; display: block; margin-bottom: 15px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; break-inside: avoid; cursor: pointer; }
-        .photo-gallery img:hover { transform: scale(1.03); }
+        /* --- 進階雜誌感照片牆 --- */
+        .photo-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* 左邊占2份寬，右邊占1份 */
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+
+        .main-photo {
+            height: 415px; /* 設定總高度 */
+        }
+
+        .side-photos {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .side-photo {
+            height: 200px; /* (415px - 15px間距) / 2 = 200px */
+        }
+
+        .photo-layout img {
+            width: 100%;
+            object-fit: cover; /* 這裡用 cover 確保填滿格子，但我們可以微調位置 */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        /* 針對中間那張直式圖，如果怕切到字，可以改用 contain */
+        .fit-contain {
+            object-fit: contain !important;
+            background-color: white;
+        }
+
+        .photo-layout img:hover {
+            transform: scale(1.02);
+        }
+
+        /* 手機版自動變回一排一條，才不會太擠 */
+        @media (max-width: 600px) {
+            .photo-layout { grid-template-columns: 1fr; }
+            .main-photo, .side-photo { height: auto; max-height: 300px; }
+        }
 
         /* --- 點擊式菜單 --- */
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
@@ -74,34 +115,19 @@
             <p>外皮酥脆、內餡紮實，我們堅持使用高品質食材，為您現點現烤最純粹的美味。</p>
         </section>
 
-    /* --- 照片牆：齊高且不裁切設計 --- */
-        .photo-gallery {
-            display: flex; /* 改為水平排列 */
-            gap: 15px;
-            margin-bottom: 60px;
-            justify-content: center;
-            flex-wrap: wrap; /* 手機版會自動換行 */
-        }
+   <!-- 照片牆：左大右二小排版 -->
+        <div class="photo-layout">
+            <!-- 左邊：大張形象圖 -->
+            <div class="main-photo">
+                <img src="形象圖.JPG" onclick="openModal('形象圖.JPG', 'logo.jpg')" alt="形象圖">
+            </div>
 
-        .photo-gallery img {
-            width: 100%;
-            /* 💡 重點：設定固定高度，讓三張圖齊高 */
-            height: 250px; 
-            /* 💡 重點：contain 確保圖片顯示全貌，不被裁切 */
-            object-fit: contain; 
-            background-color: #fff; /* 給直式圖留白處一點背景色，看起來更像拍立得 */
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            cursor: pointer;
-            flex: 1; /* 讓三張圖平分寬度 */
-            min-width: 250px; /* 防止手機上縮得太小 */
-        }
-
-        .photo-gallery img:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-        }
+            <!-- 右邊：上下兩張 -->
+            <div class="side-photos">
+                <img src="土地形象圖.JPG" class="side-photo fit-contain" onclick="openModal('土地形象圖.JPG', 'logo.jpg')" alt="土地資訊">
+                <img src="logo.jpg" class="side-photo" onclick="openModal('logo.jpg', 'logo.jpg')" alt="Logo">
+            </div>
+        </div>
 
         <!-- 推薦口味區塊 -->
         <section style="margin-bottom: 60px;">
