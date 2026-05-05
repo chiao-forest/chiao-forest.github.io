@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHiAO 森林雞蛋糕 | 桃園中壢手作甜點</title>
-    <!-- 引入森林系圖示庫 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -22,13 +21,13 @@
             line-height: 1.6;
         }
 
-        /* --- 橫幅設計 --- */
+        /* --- 橫幅：建議放一張大張的店面照或視覺圖 --- */
         header {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1519897831810-a9a01acecad1?auto=format&fit=crop&q=80'); 
+                        url('https://images.unsplash.com/photo-1519897831810-a9a01acecad1?auto=format&fit=crop&q=80'); /* 💡 換成你的大張照片網址 */
             background-size: cover;
             background-position: center;
-            height: 60vh;
+            height: 65vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -37,11 +36,10 @@
             text-align: center;
         }
 
-        .logo-title { font-size: 3em; letter-spacing: 4px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .logo-title { font-size: 3.5em; letter-spacing: 4px; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
         .sub-title { font-size: 1.2em; opacity: 0.9; font-weight: 300; }
 
-        /* --- 區塊設計 --- */
-        .container { max-width: 800px; margin: auto; padding: 40px 20px; }
+        .container { max-width: 900px; margin: auto; padding: 40px 20px; }
         .section-title {
             text-align: center;
             color: var(--forest-green);
@@ -53,13 +51,28 @@
             letter-spacing: 2px;
         }
 
-        /* --- 菜單設計 --- */
+        /* --- 視覺照片牆 --- */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+        .photo-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .photo-gallery img:hover { transform: scale(1.03); }
+
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .menu-item { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--leaf-green); }
         .menu-name { font-weight: bold; color: var(--forest-green); font-size: 1.1em; }
         .menu-price { float: right; color: var(--wood-brown); font-weight: bold; }
 
-        /* --- 按鈕設計 --- */
         .cta-container { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 30px; }
         .btn {
             padding: 14px 28px;
@@ -75,16 +88,12 @@
         .btn-google { background: #4285F4; color: white; }
         .btn-line { background: #06C755; color: white; }
         .btn-fb { background: #1877F2; color: white; }
-        .btn:hover { opacity: 0.85; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        .btn:hover { opacity: 0.85; transform: translateY(-3px); }
 
-        /* --- 資訊卡片 --- */
         .info-card { background: white; padding: 30px; border-radius: 20px; margin-top: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-        .info-card p { margin: 15px 0; font-size: 1.05em; }
-        .info-card i { color: var(--leaf-green); margin-right: 10px; width: 20px; }
         
         footer { text-align: center; padding: 50px 20px; font-size: 0.85em; color: #999; }
-        .admin-link { color: #ddd; text-decoration: none; font-size: 0.8em; transition: 0.3s; }
-        .admin-link:hover { color: var(--leaf-green); }
+        .admin-link { color: #ddd; text-decoration: none; font-size: 0.8em; }
     </style>
 </head>
 <body>
@@ -95,13 +104,19 @@
     </header>
 
     <div class="container">
-        <!-- 品牌故事 -->
-        <section style="text-align: center; margin-bottom: 60px;">
-            <h2 class="section-title">關於 CHiAO</h2>
-            <p>我們相信簡單的食材，能創造最不簡單的美味。<br>堅持現點現烤，外皮酥脆、內餡紮實，<br>為忙碌的城市生活注入一份來自森林的恬靜療癒。</p>
+        <!-- 品牌簡介 -->
+        <section style="text-align: center; margin-bottom: 50px;">
+            <h2 class="section-title">森林裡的療癒點心</h2>
+            <p>外皮酥脆、內餡紮實，我們堅持使用高品質食材，<br>為您現點現烤最純粹的美味。</p>
         </section>
 
-        <!-- 推薦口味 -->
+        <!-- 💡 照片牆區塊：請換成你的照片網址 -->
+        <div class="photo-gallery">
+            <img src="src="photo1.jpg">
+            <img src="https://images.unsplash.com/photo-1590086783191-a0694c7d1e6e?q=80&w=600" alt="雞蛋糕照片2">
+            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=600" alt="雞蛋糕照片3">
+        </div>
+
         <section style="margin-bottom: 60px;">
             <h2 class="section-title">推薦口味</h2>
             <div class="menu-grid">
@@ -110,12 +125,8 @@
                 <div class="menu-item"><span class="menu-name">苦甜巧克力</span><span class="menu-price">組合價</span></div>
                 <div class="menu-item"><span class="menu-name">黑糖 Q 麻糬</span><span class="menu-price">組合價</span></div>
             </div>
-            <p style="text-align: center; font-size: 0.9em; margin-top: 20px; color: #777;">
-                💡 現場還有更多隱藏版口味，歡迎來店選購！
-            </p>
         </section>
 
-        <!-- 聯絡與資訊 -->
         <section>
             <h2 class="section-title">聯絡我們</h2>
             <div class="info-card">
@@ -125,13 +136,13 @@
                 
                 <div class="cta-container">
                     <a href="https://www.google.com/maps/search/?api=1&query=CHiAO森林雞蛋糕" target="_blank" class="btn btn-google">
-                        <i class="fab fa-google"></i> 地圖導航
+                        <i class="fab fa-google"></i> Google 地圖
                     </a>
                     <a href="https://line.me/R/ti/p/@891leegb" target="_blank" class="btn btn-line">
                         <i class="fab fa-line"></i> LINE 預訂
                     </a>
                     <a href="https://www.facebook.com/CHiAO.forest" target="_blank" class="btn btn-fb">
-                        <i class="fab fa-facebook-f"></i> Facebook 專頁
+                        <i class="fab fa-facebook-f"></i> Facebook
                     </a>
                 </div>
             </div>
@@ -140,7 +151,6 @@
 
     <footer>
         <p>&copy; 2026 CHiAO 森林雞蛋糕 版權所有</p>
-        <!-- 這是你的內部帳本連結，記得將「你的帳號」換成 PythonAnywhere 的帳號 -->
         <a href="https://你的帳號.pythonanywhere.com" class="admin-link">Staff Login</a>
     </footer>
 
