@@ -74,12 +74,17 @@
             <p>外皮酥脆、內餡紮實，我們堅持使用高品質食材，<br>為您現點現烤最純粹的美味。</p>
         </section>
 
-        <!-- 照片牆 (點擊也可放大) -->
-        <div class="photo-gallery">
-            <img src="('形象圖.JPG','logo.jpg')" onclick="openModal(this.src)" alt="森林雞蛋糕">
-            <img src="土地形象圖.JPG" onclick="openModal(this.src)" alt=土地">
-            <img src="logo.jpg" onclick="openModal(this.src)" alt="口味特寫2">
-        </div>
+       <!-- 照片牆 (點擊也可放大) -->
+<div class="photo-gallery">
+    <!-- 第一張圖：顯示形象圖，點擊後彈出 形象圖 + logo -->
+    <img src="形象圖.JPG" onclick="openModal('形象圖.JPG', 'logo.jpg')" alt="森林雞蛋糕">
+    
+    <!-- 第二張圖：顯示土地圖，點擊後彈出 土地圖 + 你想配的另一張圖(例如 logo) -->
+    <img src="土地形象圖.JPG" onclick="openModal('土地形象圖.JPG')" alt="土地">
+    
+    <!-- 第三張圖：顯示 logo -->
+    <img src="logo.jpg" onclick="openModal('logo.jpg', 'logo.jpg')" alt="口味特寫2">
+</div>
 
         <!-- 推薦口味區塊 -->
         <section style="margin-bottom: 60px;">
