@@ -38,8 +38,8 @@
             width: 100%; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
             transition: 0.3s; cursor: pointer; display: block; 
         }
-        .left-photo { height: 242px; object-fit: cover; } /* 左邊小圖高度 */
-        .long-photo { height: 500px; object-fit: contain; background-color: white; } /* 右邊長圖不裁切 */
+        .left-photo { height: 242px; object-fit: cover; }
+        .long-photo { height: 500px; object-fit: contain; background-color: white; }
         .photo-layout img:hover { transform: translateY(-5px); }
 
         /* --- 菜單設計 --- */
@@ -57,7 +57,7 @@
         .btn { padding: 12px 20px; border-radius: 25px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; gap: 8px; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .btn:hover { opacity: 0.85; transform: translateY(-3px); }
 
-        /* --- 彈出視窗 (Modal) --- */
+        /* --- 彈出視窗 --- */
         .modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
         .modal-container { display: flex; gap: 15px; max-width: 90%; max-height: 80%; flex-direction: column; }
         @media (min-width: 768px) { .modal-container { flex-direction: row; } }
@@ -93,30 +93,29 @@
         <section style="margin-bottom: 60px;">
             <h2 class="section-title">推薦口味 (店內價)</h2>
             <div class="menu-grid">
-                <!-- 💡 您在這裡修改點擊後要出現的兩張圖 -->
                 <div class="menu-item" onclick="openModal('9.jpg','4.JPG')">
                     <span class="menu-name">經典原味 (9入)/(4入)</span><span class="menu-price">$100/$50</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
+                <div class="menu-item" onclick="openModal('cheese.jpg')">
                     <span class="menu-name">濃郁乳酪 (4入)</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('巧克力.JPG')">
+                <div class="menu-item" onclick="openModal('巧克力.JPG','巧克力1.jpg')">
                     <span class="menu-name">巧克力豆</span><span class="menu-price">$60</span>
                 </div>
                 <div class="menu-item" onclick="openModal('黑糖q.JPG')">
                     <span class="menu-name">黑糖 Q 麻糬</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
+                <div class="menu-item" onclick="openModal('dog.jpg')">
                     <span class="menu-name">熱狗</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
+                <div class="menu-item" onclick="openModal('cheesec.jpg')">
                     <span class="menu-name">乳酪巧克力</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
+                <div class="menu-item" onclick="openModal('white.jpg')">
                     <span class="menu-name">黑眼白玉</span><span class="menu-price">$60</span>
                 </div>
-                <div class="menu-item" onclick="openModal('photo1.jpeg','photo1.jpeg')">
-                    <span class="menu-name">組合 (任選三種)</span><span class="menu-price">$120</span>
+                <div class="menu-item" onclick="openModal('9mix.jpg')">
+                    <span class="menu-name">組合 (任選三種口味)</span><span class="menu-price">$120</span>
                 </div>
             </div>
         </section>
@@ -131,8 +130,12 @@
                     <a href="https://www.google.com/maps/search/?api=1&query=CHiAO森林雞蛋糕" target="_blank" class="btn" style="background:#4285F4;">Google 地圖</a>
                     <a href="https://line.me/R/ti/p/@891leegb" target="_blank" class="btn" style="background:#06C755;">LINE 預訂</a>
                     <a href="https://www.facebook.com/CHiAO.forest" target="_blank" class="btn" style="background:#1877F2;">Facebook</a>
-                    <a href="#" target="_blank" class="btn" style="background:#06C167;">Uber Eats</a>
-                    <a href="#" target="_blank" class="btn" style="background:#D70F64;">Foodpanda</a>
+                    
+                    <!-- 💡 已更新 Uber Eats 連結 -->
+                    <a href="https://www.ubereats.com/tw/store/chiao%E6%A3%AE%E6%9E%97%E9%9B%9E%E8%9B%8B%E7%B3%95/pUOn6L9ZWy-0Hw_v-Y2Fdg" target="_blank" class="btn" style="background:#06C167;">Uber Eats</a>
+                    
+                    <!-- 💡 已更新 Foodpanda 連結 -->
+                    <a href="https://www.foodpanda.com.tw/restaurant/o8vj/chiao-sen-lin-ji-dan-gao" target="_blank" class="btn" style="background:#D70F64;">Foodpanda</a>
                 </div>
             </div>
         </section>
@@ -148,7 +151,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 CHiAO 森林雞蛋糕 | <a href="https://chiao-forest.pythonanywhere.com" style="color:#ccc; text-decoration:none;">後台管理</a></p>
+        <p>&copy; 2026 🌲CHiAO 森林。雞蛋糕 | <a href="https://chiao-forest.pythonanywhere.com" style="color:#ccc; text-decoration:none;">後台管理</a></p>
     </footer>
 
     <script>
