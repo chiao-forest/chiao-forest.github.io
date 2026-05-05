@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHiAO 森林雞蛋糕 | 桃園中壢手作甜點</title>
+    <!-- 引入森林系字體與圖示 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --forest-green: #2d4628;
+            --leaf-green: #5d8233;
+            --cream: #f4f7f1;
+            --wood-brown: #8b5a2b;
+        }
+
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            background-color: var(--cream);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1550966841-39f460a6d531?auto=format&fit=crop&q=80'); /* 建議換成你店面的特寫圖 */
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .logo-title { font-size: 3em; letter-spacing: 4px; margin-bottom: 10px; }
+        .sub-title { font-size: 1.2em; opacity: 0.9; }
+
+        /* --- Section --- */
+        .container { max-width: 800px; margin: auto; padding: 40px 20px; }
+        .section-title {
+            text-align: center;
+            color: var(--forest-green);
+            border-bottom: 2px solid var(--leaf-green);
+            display: inline-block;
+            margin-bottom: 30px;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+
+        /* --- Menu --- */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .menu-item { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .menu-name { font-weight: bold; color: var(--forest-green); }
+        .menu-price { float: right; color: var(--wood-brown); }
+
+        /* --- Buttons --- */
+        .cta-container { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 30px; }
+        .btn {
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-google { background: #4285F4; color: white; }
+        .btn-line { background: #06C755; color: white; }
+        .btn-ig { background: #E1306C; color: white; }
+        .btn-fb { background: #1877F2; color: white; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+
+        /* --- Info --- */
+        .info-card { background: white; padding: 25px; border-radius: 15px; margin-top: 20px; text-align: center; }
+        
+        footer { text-align: center; padding: 40px; font-size: 0.8em; color: #888; }
+        .admin-link { color: #eee; text-decoration: none; font-size: 0.7em; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="logo-title">CHiAO 森林雞蛋糕</h1>
+        <p class="sub-title">🌲 100% 純鮮奶不加水 | 每一口都是經典純粹</p>
+    </header>
+
+    <div class="container">
+        <!-- 品牌簡介 -->
+        <section style="text-align: center; margin-bottom: 50px;">
+            <h2 class="section-title">關於我們</h2>
+            <p>外酥內軟，香濃蛋奶香氣在口中綻放。<br>我們堅持使用高品質食材，為您現點現烤最森林系的療癒點心。</p>
+        </section>
+
+        <!-- 菜單 -->
+        <section>
+            <h2 class="section-title">熱門口味</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="menu-name">經典原味 (8入)</span><span class="menu-price">$165</span></div>
+                <div class="menu-item"><span class="menu-name">濃郁乳酪</span><span class="menu-price">自選組合</span></div>
+                <div class="menu-item"><span class="menu-name">苦甜巧克力</span><span class="menu-price">自選組合</span></div>
+                <div class="menu-item"><span class="menu-name">黑糖Q麻糬</span><span class="menu-price">自選組合</span></div>
+            </div>
+            <p style="text-align: center; font-size: 0.9em; margin-top: 15px; color: #666;">※ 口味依現場供應為主，歡迎透過 LINE 預訂</p>
+        </section>
+
+        <!-- 聯絡與地圖 -->
+        <section>
+            <h2 class="section-title">找到我們</h2>
+            <div class="info-card">
+                <p><i class="fas fa-map-marker-alt"></i> 桃園市中壢區正光三街19號</p>
+                <p><i class="fas fa-clock"></i> 營業時間請參考 Google 商家最新公告</p>
+                <p><i class="fab fa-line"></i> LINE 預訂：<strong>@891leegb</strong></p>
+                
+                <div class="cta-container">
+                    <a href="https://www.google.com/maps/search/?api=1&query=CHiAO森林雞蛋糕" target="_blank" class="btn btn-google">
+                        <i class="fab fa-google"></i> Google 地圖導航
+                    </a>
+                    <a href="https://line.me/R/ti/p/@891leegb" target="_blank" class="btn btn-line">
+                        <i class="fab fa-line"></i> LINE 訂購
+                    </a>
+                    <a href="你的IG網址" target="_blank" class="btn btn-ig">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 CHiAO 森林雞蛋糕 版權所有</p>
+        <!-- 秘密傳送門：連往你的 PythonAnywhere 帳本 -->
+        <a href="https://你的帳號.pythonanywhere.com" class="admin-link">管理者登入</a>
+    </footer>
+
+</body>
+</html>
